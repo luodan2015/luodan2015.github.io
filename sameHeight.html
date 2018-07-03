@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <title>等高布局</title>
+  <style>
+    html {
+      font-size: 10px;;
+    }
+    body {
+      font-size: 1.4rem;
+    }
+    .box {
+      background-color: rgba(200,200,200,0.7);
+      /*margin: 0 1rem;*/
+      width: 33.33%;
+      /*padding: 1rem;*/
+    }
+    .box:nth-child(2) {
+      height: 5rem;
+      background-color: rgba(200,210,230,0.7);
+    }
+    .accordant {
+      display: table-row;
+    }
+    .table {
+      width: 100%;
+      display: table;
+    }
+    .table .accordant {
+      display: table-row;
+    }
+    .table .accordant .box {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .sub-box {
+      box-sizing: border-box;
+      width: 33.3%;
+      float: left;
+      border: 1px solid #d9d9d9;
+      padding-bottom: 9000px;
+      margin-bottom: -9000px;
+    }
+  </style>
+</head>
+<body>
+<h3>自适应内容高度且保持高度一致</h3>
+<p>
+  采用了table布局, 父元素用display:table, 子元素用display:table-cell（兼容IE8+）
+</p>
+<div class="table">
+  <div class="accordant">
+    <div class="box">
+      <img src="http://placehold.it/200x200.png" alt="200x200"/>
+      <p>这是一个 Figure</p>
+    </div>
+    <div class="box">
+      <img src="http://placehold.it/250x250.png" alt="200x200"/>
+      <p>这是一个 Figure</p>
+    </div>
+    <div class="box">
+      <img src="http://placehold.it/300x300.png" alt="200x200"/>
+      <p>这是一个 Figure</p>
+    </div>
+  </div>
+</div>
+<p>
+  另一种方法：为父元素设置 overflow：hidden。再为子元素设置大的 padding-bottom 属性，再用稍大一点的 margin-bottom 属性抵消；
+</p>
+<div style="overflow: hidden">
+  <div class="sub-box">
+    <p>111111111</p>
+    <p>111111111</p>
+  </div>
+  <div class="sub-box">222</div>
+  <div class="sub-box">3</div>
+</div>
+</body>
+</html>

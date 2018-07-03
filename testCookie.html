@@ -9,6 +9,10 @@
   cookie信息：
 </h2>
 <div id="showCookie"></div>
+<h2>
+  请求返回信息：
+</h2>
+<div id="showResponse"></div>
 <script>
   //写cookies
   function setCookie(name,value)
@@ -37,7 +41,31 @@
       document.cookie= name + "="+cval+";expires="+exp.toGMTString();
   }
   document.getElementById('showCookie').innerHTML = document.cookie;
+  var params = '';
+  if (document.cookie) {
+//    var arr = document.cookie.split(';');
+//    for(var i = 0; i < arr.length; i++){
+//      var item = arr[i].split('=');
+//      params[item[0]] = item[1];
+//    }
+    params = document.cookie.replace(/;/g, '&');
+  } else {
+    params = ('app_version=4.2.3; device=HUAWEI;' +
+      ' categoryName=注册会计师; categoryId=7;' +
+      ' token=ab042064f3d1c9b1; app_key=m3yu1fjc;' +
+      ' sk=d37d8ad9-46f4-427b-8b2b-e8e6eccdfe7c.' +
+      '1527238626642.9267001.ab042064f3d1c9b1.' +
+      '53328d25b7bc32d3f45f48b88067e67f').replace(/;/g, '&');
+    console.log('未获取到cookie!!!');
+  }
+  params = ('app_version=4.2.3; device=HUAWEI;' +
+    ' categoryName=注册会计师; categoryId=7;' +
+    ' token=ab042064f3d1c9b1; app_key=m3yu1fjc;' +
+    ' sk=d37d8ad9-46f4-427b-8b2b-e8e6eccdfe7c.' +
+    '1527238626642.9267001.ab042064f3d1c9b1.' +
+    '53328d25b7bc32d3f45f48b88067e67f').replace(/;/g, '&');
 
+//  获取当前设备信息
   var browser={
     versions:function(){
       var u = navigator.userAgent, app = navigator.appVersion;
@@ -65,6 +93,26 @@
     console.log('android');
 //    window.unionCar.gokhdetails(); // 方法名可以随便起
   }
+
+/* 发送请求 */
+//  var ajax = new XMLHttpRequest();
+//  ajax.open('get', 'http://app.haixue.com/qa/v1/getMyQAList.do?' + params);
+//  ajax.send();
+//  ajax.onreadystatechange = function () {
+//    if (ajax.readyState == 4 && ajax.status == 200) {
+//      var res = JSON.parse(ajax.responseText);
+//      console.log('res', res);
+//      document.getElementById('showResponse').innerHTML = ajax.responseText;
+//      if (window.wx) {  // eslint-disable-line
+//
+//        wx.error(function(res){ // eslint-disable-line
+//          console.log('validate failed:', res); // eslint-disable-line
+//        });
+//      } else {
+//        console.log('ws jssdk can not work'); // eslint-disable-line
+//      }
+//    }
+//  }
 
 </script>
 </body>
